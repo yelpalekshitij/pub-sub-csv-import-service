@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: file-upload-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: file-processor-group
+      auto-offset-reset: earliest
+    listener:
+      concurrency: 1
+
+file:
+  upload-dir: /tmp/uploads
+
+logging:
+  level:
+#    org.springframework.kafka: INFO
+    dev.yelpalekshitij.pubsubcsvimportservice: DEBUG

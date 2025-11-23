@@ -1,0 +1,43 @@
+<h2>File upload Dashboard</h2>
+
+<button (click)="loadFileJobs()">Load All File upload jobs</button>
+
+@let fetchedJobs = jobs();
+@if (fetchedJobs.length > 0) {
+  <div>
+    <h3>All Jobs</h3>
+    <ul>
+      @for (job of fetchedJobs; track job.id) {
+        <li>
+          {{ job.id }} — {{ job.status }}
+        </li>
+      }
+    </ul>
+  </div>
+}
+
+<hr>
+
+<input placeholder="Enter job id" #jobId>
+<button (click)="loadFileJobById(jobId.value)">Get File upload job</button>
+
+@let job = selectedJob();
+@if (job) {
+  <div>
+    <h3>Job Details</h3>
+
+    <p>ID: {{ job.id }}</p>
+    <p>Status: {{ job.status }}</p>
+    <p>Created at: {{ job.createdAt }}</p>
+    <p>Finished at: {{ job.completedAt }}</p>
+
+    @if (job.errors.length > 0) {
+      <p>Errors: {{ job.errors }}</p>
+    }
+  </div>
+}
+
+<hr>
+
+<input type="file" #fileInput (change)="onFileSelected($event)">
+<button (click)="upload()">Upload</button>

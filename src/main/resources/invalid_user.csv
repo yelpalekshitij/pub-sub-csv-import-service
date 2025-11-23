@@ -1,0 +1,8 @@
+id,firstName,lastName,email
+1,Ajay,Pal,Ajay.Pal@gmail.com
+2,Vijay,,vijay.pandit@gmail.com
+3,,Chan,suresh.chan@gmail.com
+four,Ramesh,Van,ramesh.van@gmail.com
+5,Vishal,Mhatre,
+,Adarsh,Shinde,adarsh.shinde@gmail.com
+6;FaultyName;
