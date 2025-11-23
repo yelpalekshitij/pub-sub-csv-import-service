@@ -70,10 +70,17 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}/file-upload-service:latest
+            ghcr.io/${{ github.repository }}/file-upload-service:${{ github.sha }}
           platforms: linux/amd64,linux/arm64
 
-      - name: Display pushed image info
-        run: |
-          echo "Pushed to GHCR: ghcr.io/${{ github.repository }}:latest"
+      # ---- Build & push frontend ----
+      - name: Build & Push Frontend Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/frontend:latest
+            ghcr.io/${{ github.repository }}/frontend:${{ github.sha }}
+          platforms: linux/amd64,linux/arm64
