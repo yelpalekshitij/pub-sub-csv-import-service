@@ -201,23 +201,11 @@ Frontend is available on `http://localhost:4200`.
 
 ### Option 3: Build Docker Images for Backend and Frontend Separately
 
-**Backend Image:**
-
-```bash
-docker build -f Dockerfile -t ghcr.io/<org>/<repo>/backend:latest .
-```
-
-**Frontend Image:**
-
-```bash
-docker build -f frontend/Dockerfile -t ghcr.io/<org>/<repo>/frontend:latest .
-```
-
 **Run via `docker-compose.yml`:**
 
 ```yaml
 backend:
-  image: ghcr.io/<org>/<repo>/backend:latest
+  image: ghcr.io/yelpalekshitij/pub-sub-csv-import-service/file-upload-service:latest
   container_name: file-upload-service
   ports:
     - "8080:8080"
@@ -228,7 +216,7 @@ backend:
     - kafka
 
 frontend:
-  image: ghcr.io/<org>/<repo>/frontend:latest
+  image: ghcr.io/yelpalekshitij/pub-sub-csv-import-service/frontend:latest
   container_name: frontend
   ports:
     - "4200:80"
