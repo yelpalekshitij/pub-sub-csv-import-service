@@ -38,7 +38,8 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka:19092"
 
   backend:
-    build: .
+    image: ghcr.io/yelpalekshitij/pub-sub-csv-import-service/file-upload-service:latest
+#    build: .
     container_name: file-upload-service
     depends_on:
       - kafka
@@ -49,6 +50,7 @@ services:
       KAFKA_BOOTSTRAP_SERVERS: kafka:9092
 
   frontend:
+#    image: ghcr.io/yelpalekshitij/pub-sub-csv-import-service/frontend:latest
     build:
       context: ./frontend
     container_name: frontend
